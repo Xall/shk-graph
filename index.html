@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="viz.js"></script>
+</head>
+<body>
+    <script>
+    function reqListener () {
+        //document.body.innerHTML += this.responseText;
+        document.body.innerHTML += Viz(this.responseText, "svg");
+    };
+
+    var oReq = new XMLHttpRequest();
+    oReq.onload = reqListener;
+    oReq.open("get", "graph.gv", true);
+    oReq.send();
+    </script>
+</body>
+</html>

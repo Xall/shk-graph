@@ -1,0 +1,120 @@
+digraph zawiwshks {
+
+    graph [
+    rankdir = "LR",
+    splines=ortho,
+    concentrate=true,
+    overlap = scale
+    ];
+
+    node [
+    fontsize = "18",
+    shape = "ellipse",
+    fontcolor=Black,
+    ];
+
+    technikshk [label="ZAWiW: Technik-SHKs"]
+
+// Sonstiges
+dokumentation [label="Dokumentation", color=Yellow, fontcolor=Black, shape=box]
+datenschutz [label="Datenschutz ;-)", color=Red, fontcolor=Black, shape=box]
+//technikshk->dokumentation [label="", style=invis]
+
+node [
+fontsize = "14",
+shape = "box",
+fontcolor=Black,
+];
+edge [
+];
+
+subgraph cluster_web {
+    style=filled;
+    color=lightgrey;
+    label="";
+
+    web [label="Web", color=Blue];
+
+    webadmin [label="Administration", color=Green];
+    webredaktion [label="Redaktion", color=Green];
+    mailing [label="Mailing", color=Green];
+
+    webdesign [ label="Webdesign", color=Green];
+
+    subgraph cluster_webdesign {
+        style=filled;
+        color=grey;
+        label="";
+
+        contao [label="Contao", color=Yellow];
+        wordpress [label="WordPress", color=Yellow];
+        drupal [label="Drupal", color=Yellow];
+        typo3 [label="Typo3", color=Yellow];
+        webklassik [label="WebKlassik", color=Yellow];
+    }
+
+    webserver [ label="Schwarzkünstler", color=Yellow];
+    webserver [ label="Schwarzkünstler", color=Yellow];
+
+}
+
+technikshk->web [label="", style=invis]
+web->webredaktion [label=""];
+web->webdesign [label=""];
+web->webadmin [label=""];
+web->mailing [label=""];
+
+webredaktion->contao;
+webredaktion->wordpress;
+webredaktion->drupal;
+webredaktion->typo3;
+webredaktion->webklassik;
+webdesign->contao;
+webdesign->wordpress;
+
+
+webdesign->webklassik;
+webadmin->contao;
+webadmin->wordpress;
+webadmin->drupal;
+webadmin->typo3;
+webadmin->webklassik;
+webadmin->webserver;
+
+
+subgraph cluster_technik {
+    style=filled;
+    color=lightgrey;
+    label="";
+
+    technik [label="Technik", color=Blue]
+
+    arbeitsplatzpcs [label="ArbeitsplatzPCs", color=Green]
+    domain [label="Windowsserver, ...", color=Green]
+    drucker [label="Drucker", color=Green]
+    geraffel [label="Geraffel", color=Green]
+}
+technikshk->technik [label="", style=invis]
+technik->arbeitsplatzpcs [label=""]
+technik->domain [label=""]
+technik->drucker [label=""]
+technik->geraffel [label=""]
+
+
+subgraph cluster_medien {
+    style=filled;
+    color=lightgrey;
+    label="";
+
+    medien [label="Medien", color=Blue]
+
+    m1 [label="???", color=Green]
+    m2 [label="???", color=Green]
+    m3 [label="???", color=Green]
+}
+technikshk->medien [label="", style=invis]
+medien->m1 [label=""]
+medien->m2 [label=""]
+medien->m3 [label=""]
+
+}
